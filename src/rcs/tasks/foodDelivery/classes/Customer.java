@@ -35,7 +35,10 @@ public class Customer extends Person {
 
     @Override
     public String getPersonInfo() {
-        return "";
+        short age = getAge();
+        return String.format("Klients: %s %s, Lietotājvārds: %s, Reģ. dat.: %s %s",
+                name, surname, username, registrationDate.toString(),
+                age > 0 ? (", Vecums: " + age) : "");
         // Klients: {name} {surname}, Lietotājvārds: {username}, Reģ. dat.: {registrationDate}, Vecums: {getAge()}
         // NOTE: Vecums nav, ja nav birthDate (ja tas ir null)
 

@@ -26,7 +26,17 @@ public class Courier extends Person {
 
     @Override
     public String getPersonInfo() {
-        return "";
+        short age = getAge();
+        String vehicleName = "";
+        if (vehicle instanceof Car) {
+            vehicleName = "Car";
+        } else if (vehicle instanceof Bicycle) {
+            vehicleName = "Bicycle";
+        }
+        return String.format("Kurjers: %s %s, Transportlīdzeklis: %s %s",
+                name, surname, vehicleName,
+                age > 0 ? (", Vecums: " + age) : "");
+
         // Kurjers: {name} {surname}, Vecums: {getAge()}, Transportlīdzeklis: {showIcon()}
         // NOTE: Vecums nav, ja nav birthDate (ja tas ir null)
     }
