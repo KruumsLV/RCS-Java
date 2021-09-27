@@ -11,8 +11,23 @@ public class Courier extends Person {
         this.vehicle = vehicle;
     }
 
-    @Override
-    void displayPerson() {
+    /**
+     *
+     * @param name
+     * @param surname
+     * @param phoneNumber
+     * @param vehicle
+     * @param birthDate Date in format YYYY-MM-DD
+     */
+    public Courier(String name, String surname, String phoneNumber, IVehicle vehicle, String birthDate) {
+        super(name, surname, phoneNumber, birthDate);
+        this.vehicle = vehicle;
+    }
 
+    @Override
+    public void displayPerson() {
+        System.out.println();
+        // Kurjers: {name} {surname}, Vecums: {getAge()}, Transportlīdzeklis: {showIcon()}
+        // NOTE: Vecums nav, ja nav birthDate (ja tas ir null)
     }
 }
