@@ -2,6 +2,7 @@ package rcs.tasks.foodDelivery;
 
 import rcs.tasks.foodDelivery.classes.*;
 import rcs.tasks.foodDelivery.enums.FoodType;
+import rcs.tasks.foodDelivery.enums.OrderStatus;
 import rcs.tasks.foodDelivery.enums.PaymentStatus;
 import rcs.tasks.foodDelivery.interfaces.IVehicle;
 
@@ -25,5 +26,8 @@ public class Program {
 
         Order order1 = new Order((Customer)customer, (Courier)courier,
                 foodList, "Mana adrese 1", PaymentStatus.CREDIT);
+        order1.setPaymentStatus(PaymentStatus.PAYED);
+        order1.changeStatus(OrderStatus.DELIVERED);
+        System.out.println(order1);
     }
 }

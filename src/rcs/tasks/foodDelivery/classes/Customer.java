@@ -34,8 +34,8 @@ public class Customer extends Person {
     }
 
     @Override
-    public void displayPerson() {
-        System.out.println();
+    public String getPersonInfo() {
+        return "";
         // Klients: {name} {surname}, Lietotājvārds: {username}, Reģ. dat.: {registrationDate}, Vecums: {getAge()}
         // NOTE: Vecums nav, ja nav birthDate (ja tas ir null)
 

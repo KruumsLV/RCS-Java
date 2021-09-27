@@ -14,4 +14,16 @@ public class Food {
         this.foodType = foodType;
         this.isAvailable = true;
     }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public double getPrice() {
+        return this.price;
+    }
+
+    public void setAvailable(boolean availability) {
+        this.isAvailable = availability;
+    }
 }

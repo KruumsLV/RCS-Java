@@ -27,7 +27,7 @@ public abstract class Person {
         this.birthDate = LocalDate.parse(birthDate);
     }
 
-    public abstract void displayPerson();
+    public abstract String getPersonInfo();
 
     public short getAge() {
         if (this.birthDate == null) {

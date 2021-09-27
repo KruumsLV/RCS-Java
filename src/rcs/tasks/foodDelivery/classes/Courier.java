@@ -25,8 +25,8 @@ public class Courier extends Person {
     }
 
     @Override
-    public void displayPerson() {
-        System.out.println();
+    public String getPersonInfo() {
+        return "";
         // Kurjers: {name} {surname}, Vecums: {getAge()}, Transportlīdzeklis: {showIcon()}
         // NOTE: Vecums nav, ja nav birthDate (ja tas ir null)
     }
