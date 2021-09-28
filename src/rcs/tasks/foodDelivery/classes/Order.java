@@ -31,31 +31,66 @@ public class Order {
     }
 
     // getPrice => aprēķina sūtijuma summu (food summa)
+    public double getPrice() {
+        double sum = 0;
+        for(Food food : foodList) {
+            sum += food.getPrice();
+        }
+        return sum;
+    }
 
     // changeStatus(newStatus) => kas nomaina statusu
     // Ja sūtījuma maksājuma veids ir CREDIT,
     // tad neļaut nomainīt statusu tālāk par SEEN statusu. Var būt [CREATED, SEEN, CANCELLED]
     // Ja sūtījuma maksājuma veids ir IN_CASH,
     // tad neļaut nomainīt statusu tālāk par DELIVERING statusu. Nevar būt [DELIVERED]
-    public void changeStatus(OrderStatus newStatus) {
+    public boolean changeStatus(OrderStatus newStatus) {
+        switch(paymentStatus) {
+            case CREDIT:
+                if (!(newStatus == OrderStatus.CREATED && newStatus == OrderStatus.SEEN
+                    && newStatus == OrderStatus.CANCELLED)) {
+                    System.out.println("Nav veikta apmaksa!");
+                    return false;
+                }
+            case IN_CASH:
+                if (newStatus == OrderStatus.DELIVERED) {
+                    System.out.println("Nav veikta apmaksa!");
+                    return false;
+                }
+            default:
+                break;
+        }
         this.orderStatus = newStatus;
-        // Ja nederīgs newStatus, tad
-        // throw new IllegalArgumentException();
-        // vai
-        // System.out.println("Kļūdas ziņojums");
+        return true;
     }
 
-    // printStatus => izvada statusu saprotamā valodā
+    public String getFoodListString() {
+        String foods = "";
+        int i = 1;
+        for(Food food : foodList) {
+            foods += food.getName() + (i++ < foodList.size() ? ", " : "");
+            //i++;
+        }
+        return foods;
+    }
 
     @Override
     public String toString() {
-        return "";
-        // Informācija par klientu { customer.getPersonInfo() } \n
-        // Informācija par kurjeru { courier.getPersonInfo() }
-        // Ēdiens: {food1 name}, {food2 name}, ... utt.
-        // Piegādes adrese: {deliveryAddress}
-        // Sūtījuma statuss
-        // Apmaksas veids/statuss
-        // Sūtījuma datums un laiks
+        return String.format("%s\n%s\n" +
+                "Ēdiens: %s\n" +
+                "Piegādes adrese: %s\n" +
+                "Cena: %.2f\n" +
+                "Sūtījuma statuss: %s\n" +
+                "Apmaksas veids: %s\n" +
+                "Sūtijuma laiks: %s",
+                customer.getPersonInfo(),
+                courier.getPersonInfo(),
+                getFoodListString(),
+                deliveryAddress,
+                getPrice(),
+                orderStatus,
+                paymentStatus,
+                orderTime
+                );
     }
 }

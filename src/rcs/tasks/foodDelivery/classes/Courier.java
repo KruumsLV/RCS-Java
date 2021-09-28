@@ -2,6 +2,8 @@ package rcs.tasks.foodDelivery.classes;
 
 import rcs.tasks.foodDelivery.interfaces.IVehicle;
 
+import java.util.Scanner;
+
 public class Courier extends Person {
 
     private IVehicle vehicle;
@@ -27,14 +29,8 @@ public class Courier extends Person {
     @Override
     public String getPersonInfo() {
         short age = getAge();
-        String vehicleName = "";
-        if (vehicle instanceof Car) {
-            vehicleName = "Car";
-        } else if (vehicle instanceof Bicycle) {
-            vehicleName = "Bicycle";
-        }
         return String.format("Kurjers: %s %s, Transportlīdzeklis: %s %s",
-                name, surname, vehicleName,
+                name, surname, vehicle.getName(),
                 age > 0 ? (", Vecums: " + age) : "");
 
         // Kurjers: {name} {surname}, Vecums: {getAge()}, Transportlīdzeklis: {showIcon()}

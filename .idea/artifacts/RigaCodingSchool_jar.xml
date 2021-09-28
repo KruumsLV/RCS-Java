@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="RigaCodingSchool:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/RigaCodingSchool_jar</output-path>
+    <root id="archive" name="RigaCodingSchool.jar">
+      <element id="module-output" name="RigaCodingSchool" />
+    </root>
+  </artifact>
+</component>
